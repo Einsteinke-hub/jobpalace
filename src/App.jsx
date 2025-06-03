@@ -64,7 +64,7 @@ export default function App(){
           <a href='#job'><button className="bg-blue-600 hover:bg-blue-700 cursor-pointer rounded-md md:text-xl text-white mt-5 p-2 text-center">Explore Jobs Now</button></a>
         </div>
         <div className="image md:mt-2">
-          <img className="rounded-md" src="./public/tenweb_media_rmitpcaav.webp" alt="job pic"/>
+          <img className="rounded-md" src="./tenweb_media_rmitpcaav.webp" alt="job pic"/>
         </div>
        </div>
        <div id="job" className="jobs m-4">
@@ -74,16 +74,16 @@ export default function App(){
         <div className="grid grid-cols-2 md:grid-cols-4 mt-10 gap-x-4 gap-y-4">
           <img className="rounded-md" src="./1.jpg" alt="job 1"/>
           <img className="rounded-md" src="./2.jpg" alt="job 2"/>
-          <img className="rounded-md" src="/3.jpg" alt="job 3"/>
-          <img className="rounded-md" src="/4.jpg" alt="job 4"/>
-          <img className="rounded-md" src="/public/5.jpg" alt="job 5"/>
-          <img className="rounded-md" src="public/6.jpg" alt="job 6"/>
-          <img className="rounded-md" src="public/7.jpg" alt="job 7"/>
-          <img className="rounded-md" src="public/8.jpg" alt="job 8"/>
-          <img className="rounded-md" src="public/9.jpg" alt="job 9"/>
-          <img className="rounded-md" src="public/10.jpg" alt="job 10"/>
-          <img className="rounded-md" src="public/11.jpg" alt="job 11"/>
-          <img className="rounded-md" src="public/12.jpg" alt="job 12"/>
+          <img className="rounded-md" src="./3.jpg" alt="job 3"/>
+          <img className="rounded-md" src="./4.jpg" alt="job 4"/>
+          <img className="rounded-md" src="./5.jpg" alt="job 5"/>
+          <img className="rounded-md" src="./6.jpg" alt="job 6"/>
+          <img className="rounded-md" src="./7.jpg" alt="job 7"/>
+          <img className="rounded-md" src="./8.jpg" alt="job 8"/>
+          <img className="rounded-md" src="./9.jpg" alt="job 9"/>
+          <img className="rounded-md" src="./10.jpg" alt="job 10"/>
+          <img className="rounded-md" src="./11.jpg" alt="job 11"/>
+          <img className="rounded-md" src="./12.jpg" alt="job 12"/>
         </div>
         <h1 className="text-blue-700 text-5xl font-semibold mt-10">More Jobs...</h1>
         <div id="post1" className="grid grid-cols-1 md:grid-cols-4 mt-10 gap-x-4 gap-y-4">
