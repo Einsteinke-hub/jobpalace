@@ -19,25 +19,18 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - name: Clean install dependencies (in jobpalace project)
+      - name: Clean install dependencies
         run: |
           npm cache clean --force
-          rm -rf node_modules package-lock.json
-          npm install --unsafe-perm=true --allow-root
-        working-directory: jobpalace
+          rm -rf node_modules package-lock.json # Remove both to force fresh install
+          npm install --unsafe-perm=true --allow-root # Install with options for native modules
 
-      - name: Build project with explicit VITE_CWD
-        env:
-          # Set VITE_CWD to the absolute path of the project directory on the runner
-          # This tells Vite its correct working directory, relative to the runner's workspace
-          # The runner's workspace is /home/runner/work/jobpalace/jobpalace
-          VITE_CWD: /home/runner/work/jobpalace/jobpalace/jobpalace/ # <--- THIS IS THE KEY CHANGE
-        run: npm run build
-        working-directory: jobpalace # Still ensures shell is in jobpalace directory
+      - name: Build project
+        run: npm run build # Now runs directly from the repo root
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./jobpalace/dist
+          publish_dir: ./dist # <--- IMPORTANT: dist is now directly in the repo root
           publish_branch: gh-pages
