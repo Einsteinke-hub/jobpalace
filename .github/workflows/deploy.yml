@@ -26,12 +26,14 @@ jobs:
           npm install --unsafe-perm=true --allow-root
         working-directory: jobpalace
 
-      - name: Build project
-        # Pass explicit root and config file path to vite
-        run: |
-          # Use npx to ensure vite binary is found, and explicitly set root and config
-          npx vite build --config ./vite.config.js --base /jobpalace/ # <--- MODIFIED THIS LINE
-        working-directory: jobpalace # Ensure this step still runs in jobpalace
+      - name: Build project with explicit VITE_CWD
+        env:
+          # Set VITE_CWD to the absolute path of the project directory on the runner
+          # This tells Vite its correct working directory, relative to the runner's workspace
+          # The runner's workspace is /home/runner/work/jobpalace/jobpalace
+          VITE_CWD: /home/runner/work/jobpalace/jobpalace/jobpalace/ # <--- THIS IS THE KEY CHANGE
+        run: npm run build
+        working-directory: jobpalace # Still ensures shell is in jobpalace directory
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
