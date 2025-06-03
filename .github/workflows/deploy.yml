@@ -19,19 +19,29 @@ jobs:
           node-version: '20' # Or your preferred Node.js version
           cache: 'npm'
 
-      - name: Navigate to project directory and install dependencies
-        run: |
-          cd jobpalace # Change into the nested project directory
-          npm install
+      - name: Navigate to project directory
+        run: cd jobpalace
 
-      - name: Build project
-        # Now that we are in 'jobpalace' directory, 'npm run build' will work directly
-        # And 'vite' should be found in local node_modules/.bin
-        run: npm run build
+      - name: Install dependencies (force clean and install)
+        run: |
+          npm cache clean --force # Clear npm cache
+          rm -rf node_modules      # Remove node_modules
+          npm install              # Reinstall from scratch
+
+      - name: Debug permissions and Build project
+        run: |
+          # Verify vite binary exists and permissions
+          ls -l node_modules/.bin/vite
+          chmod +x node_modules/.bin/vite # Explicitly give execute permissions
+          ls -l node_modules/.bin/vite # Verify permissions changed
+
+          # Attempt build using npm run, which should now find the executable
+          npm run build
+        working-directory: jobpalace # <--- Ensure this step runs in the correct directory
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./jobpalace/dist # Still relative to the repository root
+          publish_dir: ./jobpalace/dist
           publish_branch: gh-pages
