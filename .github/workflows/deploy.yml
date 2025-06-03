@@ -19,23 +19,16 @@ jobs:
           node-version: '20' # Or your preferred Node.js version
           cache: 'npm'
 
-      - name: Install dependencies (in jobpalace project)
+      - name: Clean install dependencies (in jobpalace project)
         run: |
-          npm cache clean --force # Clear npm cache
-          rm -rf node_modules      # Remove node_modules
-          npm install              # Reinstall from scratch
-        working-directory: jobpalace # <--- CRITICAL: Run this step inside 'jobpalace'
+          npm cache clean --force # Ensure cache is clean
+          rm -rf node_modules package-lock.json # Remove both to force fresh install
+          npm install --unsafe-perm=true --allow-root # Install with options for native modules
+        working-directory: jobpalace # CRITICAL: Run this step inside 'jobpalace'
 
-      - name: Debug permissions and Build project
-        run: |
-          # Verify vite binary exists and permissions
-          ls -l node_modules/.bin/vite
-          chmod +x node_modules/.bin/vite # Explicitly give execute permissions (might not be needed now)
-          ls -l node_modules/.bin/vite # Verify permissions changed
-
-          # Attempt build using npm run
-          npm run build
-        working-directory: jobpalace # <--- CRITICAL: Run this step inside 'jobpalace'
+      - name: Build project
+        run: npm run build # Use the reverted build script
+        working-directory: jobpalace # CRITICAL: Run this step inside 'jobpalace'
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
