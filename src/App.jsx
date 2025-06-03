@@ -72,10 +72,10 @@ export default function App(){
         <h1 className="text-5xl font-semibold mt-4">Find Your Next Role Today</h1>
         <p className="text-2xl text-gray-900 mt-4">Explore diverse opportunities across Kenya and discover your ideal career path with job palace's job listings.</p>
         <div className="grid grid-cols-2 md:grid-cols-4 mt-10 gap-x-4 gap-y-4">
-          <img className="rounded-md" src="public/1.jpg" alt="job 1"/>
-          <img className="rounded-md" src="public/2.jpg" alt="job 2"/>
-          <img className="rounded-md" src="public/3.jpg" alt="job 3"/>
-          <img className="rounded-md" src="public/4.jpg" alt="job 4"/>
+          <img className="rounded-md" src="/1.jpg" alt="job 1"/>
+          <img className="rounded-md" src="/2.jpg" alt="job 2"/>
+          <img className="rounded-md" src="/3.jpg" alt="job 3"/>
+          <img className="rounded-md" src="/4.jpg" alt="job 4"/>
           <img className="rounded-md" src="public/5.jpg" alt="job 5"/>
           <img className="rounded-md" src="public/6.jpg" alt="job 6"/>
           <img className="rounded-md" src="public/7.jpg" alt="job 7"/>
