@@ -57,7 +57,7 @@ export default function App(){
             <a className="block py-2 text-lg hover:text-blue-400 hover:font-bold" href="#FAQ" onClick={toggleMobileMenu}>FAQ</a>
           </div>
         )}
-       <div className="flex justify-between mt-10 md:mt-20 ml-6 flex-col md:flex-row">
+       <div className="flex justify-between mt-10 md:mt-20 ml-2 mr-2 md:ml-6 flex-col md:flex-row">
         <div className="words md:pt-14 mb-5">
           <h1 className="text-2xl md:text-6xl font-semibold font-sans">Find Your Dream Job Here</h1>
           <p className="text-lg md:text-3xl font-sans mt-3">Explore top opportunities tailored for you in Kenya with Job Palace - your gateway to a fulfilling career.</p>
