@@ -45,7 +45,7 @@ export default function App(){
           <div className="text-3xl mr-5 mt-1 md:hidden cursor-pointer" onClick={toggleMobileMenu}>
             <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} />
           </div>
-          <a href="#post2"><button className="bg-blue-700 p-3 rounded-md cursor-pointer text-white hover:bg-blue-400">Post a Job</button></a>
+          <a href="#post2"><button className="bg-blue-700 p-3 rounded-md cursor-pointer text-white hover:bg-blue-400 hidden md:flex">Post a Job</button></a>
         </div>
        </div>
        {/* Mobile Menu Overlay - conditionally rendered */}
@@ -59,7 +59,7 @@ export default function App(){
         )}
        <div className="flex justify-between mt-10 md:mt-20 ml-6 flex-col md:flex-row">
         <div className="words md:pt-14 mb-5">
-          <h1 className="text-xl md:text-6xl font-semibold font-sans">Find Your Dream Job Here</h1>
+          <h1 className="text-2xl md:text-6xl font-semibold font-sans">Find Your Dream Job Here</h1>
           <p className="text-lg md:text-3xl font-sans mt-3">Explore top opportunities tailored for you in Kenya with Job Palace - your gateway to a fulfilling career.</p>
           <a href='#job'><button className="bg-blue-600 hover:bg-blue-700 cursor-pointer rounded-md md:text-xl text-white mt-5 p-2 text-center">Explore Jobs Now</button></a>
         </div>
