@@ -8,6 +8,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions: # <--- ADD THIS BLOCK
+      contents: write # Grants write permission for the GITHUB_TOKEN
 
     steps:
       - name: Checkout repository
@@ -22,15 +24,15 @@ jobs:
       - name: Clean install dependencies
         run: |
           npm cache clean --force
-          rm -rf node_modules package-lock.json # Remove both to force fresh install
-          npm install --unsafe-perm=true --allow-root # Install with options for native modules
+          rm -rf node_modules package-lock.json
+          npm install --unsafe-perm=true --allow-root
 
       - name: Build project
-        run: npm run build # Now runs directly from the repo root
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist # <--- IMPORTANT: dist is now directly in the repo root
+          publish_dir: ./dist
           publish_branch: gh-pages
