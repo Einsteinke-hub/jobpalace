@@ -59,7 +59,7 @@ export default function App(){
         )}
        <div className="flex justify-between mt-10 md:mt-20 ml-6 flex-col md:flex-row">
         <div className="words md:pt-14 mb-5">
-          <h1 className="text-4xl md:text-6xl font-semibold font-sans">Find Your Dream Job Here</h1>
+          <h1 className="text-xl md:text-6xl font-semibold font-sans">Find Your Dream Job Here</h1>
           <p className="text-lg md:text-3xl font-sans mt-3">Explore top opportunities tailored for you in Kenya with Job Palace - your gateway to a fulfilling career.</p>
           <a href='#job'><button className="bg-blue-600 hover:bg-blue-700 cursor-pointer rounded-md md:text-xl text-white mt-5 p-2 text-center">Explore Jobs Now</button></a>
         </div>
@@ -158,17 +158,19 @@ export default function App(){
        <div id="contact" className="mt-15 text-gray-300 text-center bg-gray-600 p-5 border-b border-gray-300">
         <h1 className="text-gray-300 text-3xl font-semibold">Contact Us Today</h1>
         <p className="mt-3 text-xl">Reach us out to Job Palace in Nairobi for inquiries or support regarding job postings.</p>
-        <div className="mt-3 flex items-center justify-between ml-40 mr-45 md:ml-135 md:mr-143">
-          <i class="fa-solid fa-phone"></i>
-          <p>0759136851</p>
-        </div>
-        <div className="mt-2 flex items-center justify-between ml-40 mr-45 md:ml-135 md:mr-143 gap-x-3">
-          <i class="fa-solid fa-envelope"></i>
-          <p>einstenmarto30@gmail.com</p>
-        </div>
-        <div className="mt-2 flex items-center justify-between ml-40 mr-45 md:ml-135 md:mr-143 gap-x-3">
-          <i class="fa-solid fa-location-dot"></i>
-          <p>Komarock,Nairobi</p>
+        <div className="mt-3 flex flex-col items-center justify-center">
+            <div className="flex items-center gap-x-3 mb-2">
+                <i class="fa-solid fa-phone"></i>
+                <p>0759136851</p>
+            </div>
+            <div className="flex items-center gap-x-3 mb-2">
+                <i class="fa-solid fa-envelope"></i>
+                <p>J@gmail.com</p>
+            </div>
+            <div className="flex items-center gap-x-3">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>Nairobi town.</p>
+            </div>
         </div>
        </div>
        <div className="text-gray-300 bg-gray-600 text-center text-lg p-4">
