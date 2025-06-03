@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # IMPORTANT: Ensure this matches your default branch name (e.g., 'main' or 'master')
+      - main
 
 jobs:
   build-and-deploy:
@@ -16,23 +16,26 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Or your preferred Node.js version
+          node-version: '20'
           cache: 'npm'
 
       - name: Clean install dependencies (in jobpalace project)
         run: |
-          npm cache clean --force # Ensure cache is clean
-          rm -rf node_modules package-lock.json # Remove both to force fresh install
-          npm install --unsafe-perm=true --allow-root # Install with options for native modules
-        working-directory: jobpalace # CRITICAL: Run this step inside 'jobpalace'
+          npm cache clean --force
+          rm -rf node_modules package-lock.json
+          npm install --unsafe-perm=true --allow-root
+        working-directory: jobpalace
 
       - name: Build project
-        run: npm run build # Use the reverted build script
-        working-directory: jobpalace # CRITICAL: Run this step inside 'jobpalace'
+        # Pass explicit root and config file path to vite
+        run: |
+          # Use npx to ensure vite binary is found, and explicitly set root and config
+          npx vite build --config ./vite.config.js --base /jobpalace/ # <--- MODIFIED THIS LINE
+        working-directory: jobpalace # Ensure this step still runs in jobpalace
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./jobpalace/dist # Still relative to the repository root
+          publish_dir: ./jobpalace/dist
           publish_branch: gh-pages
