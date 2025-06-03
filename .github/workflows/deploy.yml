@@ -20,14 +20,19 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --prefix jobpalace # <--- IMPORTANT: install dependencies in the nested project too
 
       - name: Build project
-        run: npm run build --prefix jobpalace # <--- IMPORTANT: This tells npm to build the nested project
+        # Option 1: Try ensuring npm executables are found and runnable
+        # run: |
+        #   chmod +x ./node_modules/.bin/vite # Ensure vite executable has permissions
+        #   npm run build --prefix jobpalace
+        # Option 2: Directly execute vite from node_modules if path/permissions are still an issue
+        run: npx vite build --prefix jobpalace # <--- MODIFIED THIS LINE
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./jobpalace/dist # <--- IMPORTANT: This tells the action where the built files are
+          publish_dir: ./jobpalace/dist
           publish_branch: gh-pages
